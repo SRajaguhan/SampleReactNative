@@ -4,7 +4,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-//import InstagramLogin from 'react-native-instagram-login';
+import InstagramLogin from 'react-native-instagram-login';
 //import store from 'react-native-simple-store'
 class Instapage extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class Instapage extends Component {
         {this.state.failure && <View>
           <Text style={{ margin: 10 }}>failure: {JSON.stringify(this.state.failure)}</Text>
         </View>}
-        {/* <InstagramLogin
+        <InstagramLogin
         ref={ref => (this.instagramLogin = ref)}
         appId='224235891978499'
         appSecret='be17f67188142ccb97974c44896ce0c4'
@@ -48,7 +48,7 @@ class Instapage extends Component {
         scopes={['user_profile', 'user_media']}
         onLoginSuccess={ this.setIgToken }
         onLoginFailure={(data) => console.log(data)}
-    /> */}
+    />
       </View>
     );
   }
