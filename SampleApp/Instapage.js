@@ -36,15 +36,15 @@ class Instapage extends Component {
           onPress={() => this.instagramLogin.show()}>
           <Text style={{ color: 'white', textAlign: 'center' }}>Login now</Text>
         </TouchableOpacity>
-        <Text style={{ margin: 10 }}>Token: {this.state.token}</Text>
+        <Text style={{ margin: 10 }}>Token: {this.state.igToken}</Text>
         {this.state.failure && <View>
           <Text style={{ margin: 10 }}>failure: {JSON.stringify(this.state.failure)}</Text>
         </View>}
         <InstagramLogin
         ref={ref => (this.instagramLogin = ref)}
-        appId='224235891978499'
-        appSecret='be17f67188142ccb97974c44896ce0c4'
-        redirectUrl=''
+        appId='1152132335126482'
+        appSecret='b6612e3b85d5181794b1db27a81ef85b'
+        redirectUrl='https://jdrf.org/instagram/auth'
         scopes={['user_profile', 'user_media']}
         onLoginSuccess={ this.setIgToken }
         onLoginFailure={(data) => console.log(data)}
