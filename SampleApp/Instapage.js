@@ -11,7 +11,8 @@ class Instapage extends Component {
     super(props);
     this.state = {
         igToken: '',
-        igUserId: ''
+        igUserId: '',
+        igUserName: '',
     };
   }
 
@@ -20,8 +21,29 @@ class Instapage extends Component {
   //  await store.save('igUserId', data.user_id)
     console.log("tokenData",data)
     console.log("igToken",data.access_token)
-    this.setState({ igToken: data.access_token, igUserId: data.user_id})
+    this.setState({ igToken: data.access_token, igUserId: data.user_id}, () => this.getUserProfile(data.access_token,data.user_id))
+
 }
+  getUserProfile = (token,id) => {
+    // API_ROOT = "https://graph.instagram.com/${id}?fields=${'id,username'}&access_token=${token}"
+    API_ROOT = "https://graph.instagram.com/{" + id + "}" + "?fields={'id,username'}" + "&access_token={" + token + "}" 
+    console.log('API_ROOT',API_ROOT)
+    // path = "{" + id + "}" + '&password=' + password + '&api_key=gj3ot&response_format=json&v=1.0'
+    fetch(API_ROOT, {
+       method: 'GET'
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+       console.log('USERPROFILE RESPONSE',responseJson);
+      //  this.setState({
+      //     igUserName: responseJson.username
+      //  })
+    })
+    .catch((error) => {
+       console.error(error);
+    });
+ }
+
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
